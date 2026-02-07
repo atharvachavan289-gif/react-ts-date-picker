@@ -1,73 +1,51 @@
-# React + TypeScript + Vite
+# 📅 React Date & Time Range Picker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fully custom, zero-dependency Date & Time Range Picker built for the Frontend Internship assignment. 
 
-Currently, two official plugins are available:
+This component allows users to select a date range, specify times, and automatically converts the selected time to a target timezone (e.g., converting Local Time to EST).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
+**[View Live Storybook Preview](https://react-ts-date-range-picker.vercel.app/)** *(Deployed via Vercel)*
 
-## React Compiler
+## ✨ Key Features
+* **Zero External UI Libraries:** Built entirely from scratch using React hooks and Tailwind CSS.
+* **Date Range Logic:** specialized logic to handle start dates, end dates, and range highlighting.
+* **Time Selection:** 12-hour format support with AM/PM toggles.
+* **🌍 Timezone Awareness:** Uses the native `Intl.DateTimeFormat` API to accurately convert and display times across different zones (e.g., UTC, EST, IST) without heavy libraries like Moment.js.
+* **Responsive Design:** styled with Tailwind CSS for a clean, modern interface.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
+* **Core:** React, TypeScript
+* **Styling:** Tailwind CSS
+* **Development Environment:** Storybook
+* **Build Tool:** Vite
 
-## Expanding the ESLint configuration
+## 🏃‍♂️ How to Run Locally
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1.  **Clone the repository**
+    ```bash
+    git clone [https://github.com/YOUR_USERNAME/react-ts-date-picker.git](https://github.com/YOUR_USERNAME/react-ts-date-picker.git)
+    cd react-ts-date-picker
+    ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+3.  **Run Storybook**
+    ```bash
+    npm run storybook
+    ```
+    The component playground will open automatically at `http://localhost:6006`.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📂 Project Structure
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+```text
+src/
+├── components/
+│   ├── DateRangePicker.tsx       # Main container (State Management & Timezone Logic)
+│   ├── CalendarGrid.tsx          # The visual calendar grid & date math
+│   ├── TimeSelect.tsx            # Reusable dropdown for hours/minutes
+│   ├── TimezoneSelector.tsx      # Timezone selection dropdown
+│   └── DateRangePicker.stories.tsx # Storybook configuration
